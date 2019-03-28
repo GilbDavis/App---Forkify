@@ -1,5 +1,6 @@
 import Search from './models/Search';
 import * as searchView from './views/searchViews';
+import * as recipeView from './views/RecipeView';
 import Recipe from './models/Recipe';
 import {
     elements,
@@ -69,6 +70,11 @@ const controlRecipe = async () => {
 
     if (id) {
         //Prepare UI for changes
+        recipeView.clearRecipe();
+        renderLoader(elements.recipe);
+
+        //Highlight the selected search Item
+        if (state.search) searchView.highlightSelected(id);
 
         //Create a new recipe object
         state.recipe = new Recipe(id);
@@ -83,7 +89,9 @@ const controlRecipe = async () => {
             state.recipe.calcServings();
 
             //Render the recipe
-            console.log(state.recipe);
+            clearLoader();
+            recipeView.renderRecipe(state.recipe);
+
         } catch (error) {
             alert('Error processing recipe!');
         }
@@ -92,4 +100,4 @@ const controlRecipe = async () => {
 
 //window.addEventListener('hashchange', controlRecipe);
 //window.addEventListener('load', controlRecipe);
-['haschange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
+['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
