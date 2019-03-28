@@ -1,2 +1,5 @@
-# Curso---Forkify
-Proyecto Javascript enfocado a la utilización de ES2015, webapack, npm, Json y mas tecnologías para crear un sitio web de recetas.
+# App Forkify
+Aplicacion Javascript para amantes de la cocina. Navega entre miles de recetas con intrucciones e ingredientes. Puedes guardar tus recetas favoritas gracias a la seccion de favoritos.
+
+## Tecnologias utilizadas:
+Babel, WebPack, Axios y food2fork API.
